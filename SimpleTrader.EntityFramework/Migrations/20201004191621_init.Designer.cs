@@ -10,8 +10,8 @@ using SimpleTrader.EntityFramework;
 namespace SimpleTrader.EntityFramework.Migrations
 {
     [DbContext(typeof(SimpleTraderDbContext))]
-    [Migration("20201004104546_initial")]
-    partial class initial
+    [Migration("20201004191621_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,7 +104,7 @@ namespace SimpleTrader.EntityFramework.Migrations
                         .WithMany("AssetTransactions")
                         .HasForeignKey("AccountId");
 
-                    b.OwnsOne("SimpleTrader.Domain.Models.Stock", "Stock", b1 =>
+                    b.OwnsOne("SimpleTrader.Domain.Models.Asset", "Asset", b1 =>
                         {
                             b1.Property<int>("AssetTransactionId")
                                 .ValueGeneratedOnAdd()

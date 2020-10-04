@@ -18,8 +18,8 @@ namespace SimpleTrader.EntityFramework
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Ueberschreibt die Definition und erstellt keine Tabelle "Stock"
-            modelBuilder.Entity<AssetTransaction>().OwnsOne(a => a.Stock);
+            //Ueberschreibt die Definition und erstellt keine Tabelle "Asset"
+            modelBuilder.Entity<AssetTransaction>().OwnsOne(a => a.Asset);
 
             base.OnModelCreating(modelBuilder);
         }

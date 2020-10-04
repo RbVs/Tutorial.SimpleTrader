@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SimpleTrader.EntityFramework.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,8 +51,8 @@ namespace SimpleTrader.EntityFramework.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AccountId = table.Column<int>(nullable: true),
                     IsPurchase = table.Column<bool>(nullable: false),
-                    Stock_Symbol = table.Column<string>(nullable: true),
-                    Stock_PricePerShare = table.Column<double>(nullable: true),
+                    Asset_Symbol = table.Column<string>(nullable: true),
+                    Asset_PricePerShare = table.Column<double>(nullable: true),
                     Shares = table.Column<int>(nullable: false),
                     DateProcessed = table.Column<DateTime>(nullable: false)
                 },
