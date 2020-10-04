@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SimpleTrader.EntityFramework.Migrations
 {
@@ -13,7 +14,9 @@ namespace SimpleTrader.EntityFramework.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    DateJoined = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,7 +53,8 @@ namespace SimpleTrader.EntityFramework.Migrations
                     IsPurchase = table.Column<bool>(nullable: false),
                     Stock_Symbol = table.Column<string>(nullable: true),
                     Stock_PricePerShare = table.Column<double>(nullable: true),
-                    Shares = table.Column<int>(nullable: false)
+                    Shares = table.Column<int>(nullable: false),
+                    DateProcessed = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
