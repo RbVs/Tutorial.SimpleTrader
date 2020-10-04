@@ -20,7 +20,7 @@ namespace SimpleTrader.WPF.ViewModels
             get => _dowJones;
             set
             {
-                _dowJones = value; 
+                _dowJones = value;
                 OnPropertyChanged(nameof(DowJones));
             }
         }
@@ -30,7 +30,7 @@ namespace SimpleTrader.WPF.ViewModels
             get => _nasdaq;
             set
             {
-                _nasdaq = value; 
+                _nasdaq = value;
                 OnPropertyChanged(nameof(Nasdaq));
             }
         }
@@ -54,17 +54,17 @@ namespace SimpleTrader.WPF.ViewModels
 
         private void LoadMajorIndex()
         {
-            _majorIndexService.GetMajorIndex(MajorIndexType.DowJones).ContinueWith(task =>
+            _majorIndexService.GetMajorIndex(MajorIndexType.DowJones).ContinueWith(async task =>
             {
-                if (task.Exception == null) DowJones = task.Result;
+                if (task.Exception == null) DowJones = await task.ConfigureAwait(false);
             });
-            _majorIndexService.GetMajorIndex(MajorIndexType.Nasdaq).ContinueWith(task =>
+            _majorIndexService.GetMajorIndex(MajorIndexType.Nasdaq).ContinueWith(async task =>
             {
-                if (task.Exception == null) Nasdaq = task.Result;
+                if (task.Exception == null) Nasdaq = await task.ConfigureAwait(false);
             });
-            _majorIndexService.GetMajorIndex(MajorIndexType.SP500).ContinueWith(task =>
+            _majorIndexService.GetMajorIndex(MajorIndexType.SP500).ContinueWith(async task =>
             {
-                if (task.Exception == null) SP500 = task.Result;
+                if (task.Exception == null) SP500 = await task.ConfigureAwait(false);
             });
         }
     }

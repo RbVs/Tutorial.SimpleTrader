@@ -1,7 +1,11 @@
 ﻿using System.Windows;
 using SimpleTrader.Domain.Models;
-using SimpleTrader.WPF.ViewModels;
+using SimpleTrader.Domain.Services;
+using SimpleTrader.Domain.Services.TransactionServices;
+using SimpleTrader.EntityFramework;
+using SimpleTrader.EntityFramework.Services;
 using SimpleTrader.FinancialModelingPrepAPI.Services;
+using SimpleTrader.WPF.ViewModels;
 
 namespace SimpleTrader.WPF
 {
@@ -10,9 +14,9 @@ namespace SimpleTrader.WPF
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
-            new MajorIndexService().GetMajorIndex(Domain.Models.MajorIndexType.DowJones).ContinueWith((task) =>
+            new MajorIndexService().GetMajorIndex(MajorIndexType.DowJones).ContinueWith(task =>
             {
                 var index = task.Result;
             });
