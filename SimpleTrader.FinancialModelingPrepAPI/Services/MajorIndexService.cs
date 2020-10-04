@@ -14,10 +14,10 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
         public async Task<MajorIndex> GetMajorIndex(MajorIndexType indexType)
         {
             string uri = "https://financialmodelingprep.com/api/v3/majors-indexes/" + GetUriSuffix(indexType);
-
+            var _apiKey = "f9640047997a5e29a933b2a86d1c337f";
             using var client = new HttpClient();
 
-            var response = await client.GetAsync(uri);
+            var response = await client.GetAsync($"{uri}?apikey={_apiKey}");
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
             var majorIndex = JsonConvert.DeserializeObject<MajorIndex>(jsonResponse);
