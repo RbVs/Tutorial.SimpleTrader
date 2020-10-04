@@ -1,4 +1,6 @@
-﻿namespace SimpleTrader.Domain.Models
+﻿using System;
+
+namespace SimpleTrader.Domain.Models
 {
     public class AssetTransaction
     {
@@ -7,5 +9,6 @@
         public bool IsPurchase { get; set; }
         public Stock Stock { get; set; }
         public int Shares { get; set; }
+        public DateTime DateProcessed { get; set; }
     }
 }
